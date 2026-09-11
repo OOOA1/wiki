@@ -1,0 +1,3 @@
+export async function api<T=any>(body?:Record<string,unknown>,query=''):Promise<T>{const response=await fetch('/api/wiki'+query,{method:body?'POST':'GET',headers:body?{'Content-Type':'application/json'}:undefined,body:body?JSON.stringify(body):undefined,cache:'no-store'});const result=await response.json() as T & {error?:string};if(!response.ok)throw new Error(result.error||'Не удалось выполнить действие.');return result}
+export function initials(name:string){return name.split(/[\s@._-]/).filter(Boolean).slice(0,2).map(x=>x[0]).join('').toUpperCase()||'К'}
+export function dateLabel(time:number){return new Date(time).toLocaleDateString('ru-RU',{day:'numeric',month:'short'})}

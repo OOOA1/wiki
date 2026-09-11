@@ -1,0 +1,9 @@
+export type Role='admin'|'editor'|'viewer';
+export type Member={id:string;name:string;email:string;role:Role;active:number;created_at:number;invitation_id:string|null};
+export type Section={id:string;name:string;description:string;color:string;icon:string;position:number};
+export type Article={id:string;title:string;section_id:string;content:string;format:'markdown'|'html';excerpt:string;tags:string[];status:'published'|'draft';pinned:number;author_id:string;author_name:string;updated_by:string;updated_name:string;created_at:number;updated_at:number;version:number;is_example:number;bookmarked:boolean;html?:string};
+export type Invitation={id:string;label:string;role:Role;max_uses:number;uses:number;expires_at:number;created_at:number;revoked:number};
+export type WikiState={me:Member;sections:Section[];articles:Article[];members:Member[];invitations:Invitation[]};
+export type Validation={html:string;warnings:string[];wordCount:number};
+export const roles:Record<Role,string>={admin:'Администратор',editor:'Редактор',viewer:'Читатель'};
+export const colors=[{id:'purple',hex:'#8b72da',bg:'var(--soft-purple)'},{id:'blue',hex:'#6396d7',bg:'var(--soft-blue)'},{id:'orange',hex:'#d49a5b',bg:'var(--soft-orange)'},{id:'green',hex:'#66a18c',bg:'var(--soft-green)'}];
